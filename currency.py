@@ -1,11 +1,37 @@
 from tkinter import * #Import whole module
 
-class CurrencyConvereter: 
+class CurrencyConvereter(): 
     def __init__(self):
         window = Tk()                       # create application window
         window.title("Currency Converter")  # add title to application window
         window.geometry("450x350")          # specify size of the window
         window.configure(bg = "dark grey")  # Add background color
+
+        # declaring our variables
+        self.dropdownVar = StringVar()
+
+
+        # Add a grid
+        dropframe = Frame(window)
+        dropframe.grid( column = 0, row = 0, sticky = (N,W,E,S) )
+        dropframe.columnconfigure(0, weight = 1)
+        dropframe.rowconfigure(0, weight = 1)
+        dropframe.pack(pady = 100, padx = 100)
+
+        # Dictionary with options
+        choices = { 'Naira','Dollar','Pounds','Yen','Cedis'}
+        dropdownVar.set('Naira') # set the default option
+        
+        popupMenu = OptionMenu(dropframe, dropdownVar, *choices)
+        Label(dropframe, text="Amount to convert").grid(row = 1, column = 1)
+        popupMenu.grid(row = 2, column =1)
+
+        # on change dropdown value
+        def change_dropdown(*args):
+            print( dropdownVar.get() )
+
+        # link function to change dropdown
+        dropdownVar.trace('w', change_dropdown)
 
         # Adding Labels widgets to the application windows
         Label(window, font = "Helvetica 12 bold", bg = "yellow", text = "Amount to convert").grid(row=1, column = 1, sticky = W)
@@ -31,8 +57,8 @@ class CurrencyConvereter:
     #Function to do the conversion. stores inputs and performs computation
     def ConvertedAmount(self):
         amt = float(self.conversionRate.get())
-        convertedAmountVar = float(self.amounttoConvertVar.get())* amt
-        self.convertedAmountVar.set(format(convertedAmountVar, '10.2f')
+        convertedAmountVar = float( self.amounttoConvertVar.get() )* amt
+        self.convertedAmountVar.set(format(convertedAmountVar, '10.2f'))
         
     # Function to clear inputs
     def delete_all(self):
