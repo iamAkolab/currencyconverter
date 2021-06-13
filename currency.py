@@ -8,7 +8,7 @@ class CurrencyConvereter():
         window.configure(bg = "dark grey")  # Add background color
 
         # declaring our variables
-        self.dropdownVar = StringVar()
+        dropdownVar = StringVar()
 
 
         # Add a grid
@@ -20,7 +20,7 @@ class CurrencyConvereter():
 
         # Dictionary with options
         choices = { 'Naira','Dollar','Pounds','Yen','Cedis'}
-        dropdownVar.set('Naira') # set the default option
+        dropdownVar.set('Naira')                 # set the default option
         
         popupMenu = OptionMenu(dropframe, dropdownVar, *choices)
         Label(dropframe, text="Amount to convert").grid(row = 1, column = 1)
@@ -34,23 +34,23 @@ class CurrencyConvereter():
         dropdownVar.trace('w', change_dropdown)
 
         # Adding Labels widgets to the application windows
-        Label(window, font = "Helvetica 12 bold", bg = "yellow", text = "Amount to convert").grid(row=1, column = 1, sticky = W)
+        #slflabl = Label(window, font = "Helvetica 12 bold", bg = "yellow", text = "Amount to convert").grid(row=1, column = 1, sticky = W)
 
         # Variable to be Convert with Entry Function
         self.amounttoConvertVar = StringVar()
-        Entry(window, textvariable = self.amounttoConvertVar, justify = RIGHT).grid(row = 1, column = 2)
+        #amounttoConvertVar = Entry(window, textvariable = self.amounttoConvertVar, justify = RIGHT).grid(row = 1, column = 2)
 
         # Conversion Rate with Entry Function
         self.conversionRate = StringVar()
-        Entry(window, textvariable = self.conversionRate, justify = RIGHT).grid(row = 2, column = 2)
+        #Entry(window, textvariable = self.conversionRate, justify = RIGHT).grid(row = 2, column = 2)
 
         # Converted Amount
         self.convertedAmountVar = StringVar()
-        lblConveretedAmount = Label(window, font = "Helvetica 12 bold", bg = "yellow", textvariable = self.convertedAmountVar).grid(row=3, column = 2, sticky = E)
+        # = Label(window, font = "Helvetica 12 bold", bg = "yellow", textvariable = self.convertedAmountVar).grid(row=3, column = 2, sticky = E)
 
         #create convert and clear buttons
         btbConvertedAmount = Button(window, text = "Convert", font = "Helvetica 12 bold", bg = "blue", fg = "white", command = self.ConvertedAmount).grid(row = 4, column = 2, sticky = E)
-        btbdelete_all = Button(window, text = "Clear", font = "Helvetica 12 bold", bg = "red", fg = "white", command = self.delete_all).grid(row = 4, column = 6, padx = 25, pady = 25, sticky = E)
+        #btbdelete_all = Button(window, text = "Clear", font = "Helvetica 12 bold", bg = "red", fg = "white", command = self.delete_all).grid(row = 4, column = 6, padx = 25, pady = 25, sticky = E)
 
         window.mainloop() # run the application
 
